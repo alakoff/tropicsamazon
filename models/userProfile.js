@@ -53,8 +53,8 @@ module.exports = function(sequelize, DataTypes) {
       city: {
         type: DataTypes.STRING
       },
-      state: {
-        type: DataTypes.STRING
+      stateId: {
+        type: DataTypes.INTEGER
       },
       zipcode: {
         type: DataTypes.STRING
