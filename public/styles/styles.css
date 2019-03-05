@@ -1,3 +1,10 @@
 .list-group-item {
   line-height: 2.5;
 }
+#login{
+  margin-top: 80px;
+}
+
+#or{
+  margin-left: 45px;
+}
