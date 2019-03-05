@@ -24,9 +24,10 @@ userStatus boolean not null,
 userType varchar(30) not null,
 userAddress text(255),
 city varchar(30),
-state varchar(10),
+stateId integer(11),
 zipcode varchar(10),
-primary key(user_id)
+primary key(user_id),
+FOREIGN KEY (stateID) REFERENCES state(stateId)
 );
 
 drop table if exists item;
@@ -58,4 +59,13 @@ itemQuantity integer(11) not null,
 lineItemTotal DECIMAL(11,4) not NULL,
 FOREIGN KEY (orderDetailsId) REFERENCES userOrder(orderId),
 FOREIGN KEY (itemId) REFERENCES item(itemId)
+);
+
+drop table if exists state;
+CREATE TABLE state(
+  
+stateID integer(11) auto_increment not null,
+stateCode varchar(2) NOT NULL,
+stateName varchar(128) NOT NULL,
+primary key(stateID)
 );
