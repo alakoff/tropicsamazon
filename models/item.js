@@ -42,12 +42,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     { freezeTableName: true }
   );
-   Item.associate = function(models) {
-      Item.belongsTo(models.Department, {
-      
-      foreignKey: 'departmentId', targetKey: 'departmentId'
-       
-    }); 
+  Item.associate = function(models) {
+    Item.belongsTo(models.Department, {
+      foreignKey: "departmentId",
+      targetKey: "departmentId"
+    });
   };
   return Item;
 };

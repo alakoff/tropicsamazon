@@ -2,7 +2,6 @@ module.exports = function(sequelize, DataTypes) {
   var OrderDetails = sequelize.define(
     "OrderDetails",
     {
-      
       itemQuantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -20,17 +19,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     { freezeTableName: true }
   );
-OrderDetails.associate = function(models) {
-  OrderDetails.belongsTo(models.UserOrder, {
-  
-  foreignKey: 'orderDetailsId', targetKey: 'orderId'
-   
-}); 
-OrderDetails.belongsTo(models.Item, {
-    
-  foreignKey: 'itemId', targetKey: 'itemId'
-   
-}); 
-};
+  OrderDetails.associate = function(models) {
+    OrderDetails.belongsTo(models.UserOrder, {
+      foreignKey: "orderDetailsId",
+      targetKey: "orderId"
+    });
+    OrderDetails.belongsTo(models.Item, {
+      foreignKey: "itemId",
+      targetKey: "itemId"
+    });
+  };
   return OrderDetails;
 };

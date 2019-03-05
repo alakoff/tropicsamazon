@@ -31,10 +31,9 @@ module.exports = function(sequelize, DataTypes) {
   );
   UserOrder.associate = function(models) {
     UserOrder.belongsTo(models.OrderStatus, {
-    
-    foreignKey: 'orderStatusId', targetKey: 'orderStatusId'
-     
-  }); 
-};
+      foreignKey: "orderStatusId",
+      targetKey: "orderStatusId"
+    });
+  };
   return UserOrder;
 };

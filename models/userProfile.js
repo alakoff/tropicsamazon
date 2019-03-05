@@ -63,10 +63,9 @@ module.exports = function(sequelize, DataTypes) {
   );
   UserProfile.associate = function(models) {
     UserProfile.belongsTo(models.State, {
-    
-    foreignKey: 'stateId', targetKey: 'stateId'
-     
-  }); 
-};
+      foreignKey: "stateId",
+      targetKey: "stateId"
+    });
+  };
   return UserProfile;
 };
