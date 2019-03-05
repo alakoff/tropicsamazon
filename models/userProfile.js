@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  var userProfile = sequelize.define(
-    "userProfile",
+  var UserProfile = sequelize.define(
+    "UserProfile",
     {
       userId: {
         type: DataTypes.INTEGER,
@@ -53,9 +53,6 @@ module.exports = function(sequelize, DataTypes) {
       city: {
         type: DataTypes.STRING
       },
-      stateId: {
-        type: DataTypes.INTEGER
-      },
       zipcode: {
         type: DataTypes.STRING
       }
@@ -64,5 +61,11 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true
     }
   );
-  return userProfile;
+  UserProfile.associate = function(models) {
+    UserProfile.belongsTo(models.State, {
+      foreignKey: "stateId",
+      targetKey: "stateId"
+    });
+  };
+  return UserProfile;
 };
