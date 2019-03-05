@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Item = sequelize.define(
-    "item",
+    "Item",
     {
       // Defining the Item model
       itemId: {
@@ -29,13 +29,6 @@ module.exports = function(sequelize, DataTypes) {
       itemImage: {
         type: DataTypes.BLOB
       },
-      departmentId: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
       stockQuantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -49,5 +42,12 @@ module.exports = function(sequelize, DataTypes) {
     },
     { freezeTableName: true }
   );
+   Item.associate = function(models) {
+      Item.belongsTo(models.Department, {
+      
+      foreignKey: 'departmentId', targetKey: 'departmentId'
+       
+    }); 
+  };
   return Item;
 };

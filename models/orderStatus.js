@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  var orderStatus = sequelize.define(
-    "orderStatus",
+  var OrderStatus = sequelize.define(
+    "OrderStatus",
     {
       orderStatusId: {
         type: DataTypes.INTEGER,
@@ -19,5 +19,5 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true
     }
   );
-  return orderStatus;
+  return OrderStatus;
 };

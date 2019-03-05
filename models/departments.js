@@ -1,11 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
-  var Departments = sequelize.define(
-    "departments",
+  var Department = sequelize.define(
+    "Department",
     {
       departmentId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
       },
       departmentName: {
         type: DataTypes.STRING,
@@ -26,5 +30,5 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true
     }
   );
-  return Departments;
+  return Department;
 };
