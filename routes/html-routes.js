@@ -22,7 +22,7 @@ module.exports = function(app) {
 
   // cureate User route loads account.html
   app.get("/createUser", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/accout.html"));
+    res.sendFile(path.join(__dirname, "../public/account.html"));
   });
 
   // blog route loads blog.html
