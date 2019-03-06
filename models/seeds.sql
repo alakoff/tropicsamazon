@@ -62,3 +62,8 @@ INSERT into state (stateCode,stateName)values ('AL', 'Alabama'),
 ('WY', 'Wyoming');
 
 select * from state;
+
+insert into UserProfile(userName,userEmail,userPasswd,userStatus,userType,userAddress,city,zipcode,createdat,updatedAt) 
+values('Admin','silpashinto@gmail.com','admin',1,'admin','3244 kilburn','Glen Allen','23233',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+
+select * from UserProfile;

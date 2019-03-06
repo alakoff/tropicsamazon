@@ -7,32 +7,76 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Bootstrap link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- CSS file link -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/styles.css" />
+    <!-- Javascript -->
+    <script src="./js/tropicamazon.js"></script>
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <div class="row">
                 <img src="./images/instagram_profile_image.png" alt="" style="width:1em; height:39em;" class="col-sm-8">
                 <div class="col-md-4" id="login">
                     <h1 class="display-4">Login</h1>
                     <br>
-                    <br>
-                    <button type="button" class="btn btn-primary btn-lg">Customer</button>
+                    <button type="button" class="btn btn-primary btn-lg">Custumer Login</button>
                     <br>
                     <button type="button" class="btn btn-link">Create an account?</button>
+                    <hr class="my-4">
                     <br>
-                    <h3 id="or">or</h3>
-                    <br>
-                    <button type="button" id="adminLogin" class="btn btn-primary btn-lg">Manager</button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#managerLogin"
+                        data-whatever="">Manager Login</button>
+                </div>
+            </div>
+        
+    </div>
+    <!--Login Model Div for Admin-->
+
+    <div class="modal fade" id="managerLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="managerLoginLabel">Manager Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">UserName:</label>
+                            <input type="text" class="form-control" id="UserName">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Password:</label>
+                            <input type="password" class="form-control" id="PassWd">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="mLoginSubmit" class="btn btn-primary">Login</button>
                 </div>
             </div>
         </div>
     </div>
-
-
+    <!--Login model div end-->
     <script src="" async defer></script>
 </body>
 

@@ -1,3 +1,6 @@
+body{
+  background: #e9ecef;
+}
 .list-group-item {
   line-height: 2.5;
 }

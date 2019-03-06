@@ -10,17 +10,21 @@ var db = require("../models");
 
 // Routes
 // =============================================================
-module.exports = function (app) {
-
-  // // GET route for getting all of the posts
-  // app.get("/api/posts", function (req, res) {
-  //   // Add sequelize code to find all posts, and return them to the user with res.json
-  //   db.Post.findAll({}).then(function (dbPost) {
-  //     // return the result to the user with res.json
-  //     res.json(dbPost);
-  //   });
-
-  // });
+module.exports = function(app) {
+  // GET route for getting all of the posts
+  app.post("/api/signIn/", function(req, res) {
+    // Add sequelize code to find  and login Admin, and return them to the adminDashbord with res.json
+    db.UserProfile.findOne({
+      where: {
+        userName: req.body.userName,
+        userPasswd: req.body.userPasswd,
+        userType: req.body.userType
+      }
+    }).then(function(dbUser) {
+      // return the result to the user with res.json
+      res.json(dbUser);
+    });
+  });
 
   // // Get route for returning posts of a specific category
   // app.get("/api/posts/category/:category", function (req, res) {
