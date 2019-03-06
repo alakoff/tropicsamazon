@@ -5,3 +5,12 @@
     #addCart{
         margin-left: 10px;
     }
+    #logOut{
+        margin-left: 10px;
+    }
+
+    /* from cart.html */
+    #myCart{
+        text-align: center;
+    }
+
