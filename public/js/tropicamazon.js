@@ -36,6 +36,11 @@ $(function() {
   });
 });
 
+// sends the user to the create an account file
+$("#create").on("click", function() {
+  console.log("create account");
+  window.location.href = "/createUser";
+});
 // $(function() {
 //   $(".create-form").on("submit", function(event) {
 //     // Make sure to preventDefault on a submit event.
