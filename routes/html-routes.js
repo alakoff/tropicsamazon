@@ -20,7 +20,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/dashboard.html"));
   });
 
-  // cureate User route loads account.html
+  // create User route loads account.html
   app.get("/createUser", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/account.html"));
   });
