@@ -12,8 +12,12 @@ $(function() {
   $("#mLoginSubmit").on("click", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
-    var UserName = $("#UserName").val().trim();
-    var PassWd = $("#PassWd").val().trim();
+    var UserName = $("#UserName")
+      .val()
+      .trim();
+    var PassWd = $("#PassWd")
+      .val()
+      .trim();
     if (UserName && PassWd) {
       var LoginUser = {
         userName: UserName,
@@ -35,7 +39,6 @@ $(function() {
     });
   });
 });
-
 // $(function() {
 //   $(".create-form").on("submit", function(event) {
 //     // Make sure to preventDefault on a submit event.
@@ -103,4 +106,3 @@ $(function() {
 //         );
 //     });
 // });
-
