@@ -103,3 +103,8 @@ $("#create").on("click", function() {
   console.log("create account");
   window.location.href = "/createUser";
 });
+
+$("#customer").on("click", function() {
+  console.log("customer");
+  window.location.href = "/customers";
+});
