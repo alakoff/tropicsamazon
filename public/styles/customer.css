@@ -9,6 +9,11 @@
         margin-left: 10px;
     }
 
+    #con{
+    background:#f8f9fa;
+    
+    }
+
     /* from cart.html */
     #myCart{
         text-align: center;
