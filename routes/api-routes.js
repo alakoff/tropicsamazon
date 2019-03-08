@@ -29,7 +29,7 @@ module.exports = function(app) {
   // // Get route for returning posts of a specific category
   // app.get("/api/posts/category/:category", function (req, res) {
   //   // Add sequelize code to find all posts where the category is equal to req.params.category,
-    
+
   //   db.Post.findAll({
   //     where: {
   //       category: req.params.category
@@ -41,6 +41,15 @@ module.exports = function(app) {
   //   });
 
   // });
+  app.get("api/createAccount/states", function(req, res) {
+    db.State.findAll({
+      where: {
+        tableName: State
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
 
   // // Get route for retrieving a single post
   // app.get("/api/posts/:id", function (req, res) {
@@ -72,7 +81,7 @@ module.exports = function(app) {
 
   // // DELETE route for deleting posts
   // app.delete("/api/posts/:id", function (req, res) {
-  //   // Add sequelize code to delete a post where the id is equal to req.params.id, 
+  //   // Add sequelize code to delete a post where the id is equal to req.params.id,
   //   db.Post.destroy({
   //     where: {
   //       id: req.params.id
@@ -82,12 +91,11 @@ module.exports = function(app) {
   //     res.json(dbPost);
   //   });
 
-    
   // });
 
   // // PUT route for updating posts
   // app.put("/api/posts", function (req, res) {
-  //   // Add code here to update a post using the values in req.body, where the id is equal to req.body.id and 
+  //   // Add code here to update a post using the values in req.body, where the id is equal to req.body.id and
   //   db.Post.update({
   //     title: req.body.title,
   //     body: req.body.body,
@@ -99,7 +107,7 @@ module.exports = function(app) {
   //   }).then(function(dbPost) {
   //    // return the result to the user using res.json
   //     res.json(dbPost);
-  //   }); 
+  //   });
 
   // });
 };
