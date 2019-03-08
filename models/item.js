@@ -19,6 +19,13 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       },
+      itemPrice: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },
       itemDesciption: {
         type: DataTypes.STRING,
         allowNull: false,
