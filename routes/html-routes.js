@@ -15,11 +15,6 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
-
-  app.get("/managerDashboard", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/dashboard.html"));
-  });
-
   // create User route loads account.html
   app.get("/createUser", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/account.html"));
@@ -33,5 +28,19 @@ module.exports = function(app) {
   // authors route loads author-manager.html
   app.get("/admin", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/admin.html"));
+  });
+  // // Each of the below routes just handles the HTML page that the user gets sent to.
+  app.get("/items", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/mItems.html"));
+  });
+  app.get("/users", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/mUsers.html"));
+  });
+  app.get("/depts", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/mDept.html"));
+  });
+  // cureate User route loads account.html
+  app.get("/signOut", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 };

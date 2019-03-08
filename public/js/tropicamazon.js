@@ -4,20 +4,27 @@ $(function() {
     var button = $(event.relatedTarget);
     var recipient = button.data("whatever");
     var modal = $(this);
-    // modal.find(".modal-title").text("New message to " + recipient);
     modal.find(".modal-body input").val(recipient);
   });
 
+  $("#newItem").on("show.bs.modal", function(event) {
+    var button = $(event.relatedTarget);
+    var recipient = button.data("whatever");
+    var modal = $(this);
+    modal.find(".modal-body input").val(recipient);
+  });
+  $("#newDept").on("show.bs.modal", function(event) {
+    var button = $(event.relatedTarget);
+    var recipient = button.data("whatever");
+    var modal = $(this);
+    modal.find(".modal-body input").val(recipient);
+  });
   //admin dashboard
   $("#mLoginSubmit").on("click", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
-    var UserName = $("#UserName")
-      .val()
-      .trim();
-    var PassWd = $("#PassWd")
-      .val()
-      .trim();
+    var UserName = $("#UserName").val().trim();
+    var PassWd = $("#PassWd").val().trim();
     if (UserName && PassWd) {
       var LoginUser = {
         userName: UserName,
@@ -32,77 +39,180 @@ $(function() {
       if (result) {
         console.log("Display the Dashboard");
         // Reload the page to get the updated list
-        location.assign("/managerDashboard");
+        location.assign("/items");
       } else {
         alert("Not a valid entry");
       }
     });
   });
+  $.ajax("/api/items/", {
+    type: "GET"
+  }).then(function(dbItmes) {
+    if (dbItmes) {
+      //console.log(dbItmes);
+      var tableHead = $("<thead>");
+      var theadTr = $("<tr>").html(
+        "<th scope='col'>#</th><th scope='col'>ItemName</th><th scope='col'>ItemPrice</th><th scope='col'>StockQuantity</th><th scope='col'>Department</th><th scope='col'>ProductSale</th>");
+      tableHead.append(theadTr);
+      var tbody = $("<tbody>");
+      for (var i = 0; i < dbItmes.length; i++) {
+        var tr = $("<tr>");
+        var th = $("<th>").attr("scope", "row").text(dbItmes[i].itemId);
+        var td1 = $("<td>").text(dbItmes[i].itemName);
+        var td2 = $("<td>").text(dbItmes[i].itemPrice);
+        var td3 = $("<td>").text(dbItmes[i].stockQuantity);
+        var td4 = $("<td>").text(dbItmes[i].Department.departmentName);
+        var td5 = $("<td>").text(dbItmes[i].productSales);
+        var td6 = "<i data-id =" +
+          dbItmes[i].itemId +
+          " class='fa fa-pencil-square' aria-hidden='true'></i> &nbsp;&nbsp;<i data-id=" +
+          dbItmes[i].itemId + " class='fa fa-trash' aria-hidden='true'></i> ";
+        tr.append(th, td1, td2, td3, td4, td5, td6);
+        tbody.append(tr);
+      }
+      $("#itemTable").append(tableHead, tbody);
+    } else {
+      $("#tbody").text("Nothing to show");
+    }
+
+    $.ajax("/api/depts/", {
+      type: "GET"
+    }).then(function(dbDept) {
+      if (dbDept) {
+        var optionH = $("<option>").text("Select Department");
+        $("#dept").append(optionH);
+        for (var i = 0; i < dbDept.length; i++) {
+          var option = $("<option>")
+            .attr("value", dbDept[i].departmentId)
+            .text(dbDept[i].departmentName);
+          $("#dept").append(option);
+        }
+      } else {
+        $("#tbody").text("Nothing to show");
+      }
+    });
+  });
+
+  $.ajax("/api/users/", {
+    type: "GET"
+  }).then(function(dbUsers) {
+    if (dbUsers) {
+      var tableHead = $("<thead>");
+      var theadTr = $("<tr>").html(
+        "<th scope='col'>#</th><th scope='col'>UserName</th><th scope='col'>UserEmail</th><th scope='col'>UserType</th>"
+      );
+      tableHead.append(theadTr);
+      var tbody = $("<tbody>");
+      for (var i = 0; i < dbUsers.length; i++) {
+        var tr = $("<tr>");
+        var th = $("<th>").attr("scope", "row").text(dbUsers[i].userId);
+        var td1 = $("<td>").text(dbUsers[i].userName);
+        var td2 = $("<td>").text(dbUsers[i].userEmail);
+        var td3 = $("<td>").text(dbUsers[i].userType);
+        var td4 = "<i data-id=" +
+          dbUsers[i].userId + 
+          " class='fa fa-pencil-square' aria-hidden='true'></i> &nbsp;&nbsp;<i data-id=" +
+          dbUsers[i].userId + " class='fa fa-trash' aria-hidden='true'></i> ";
+
+        tr.append(th, td1, td2, td3, td4);
+        tbody.append(tr);
+      }
+      $("#userTable").append(tableHead, tbody);
+    } else {
+      $("#tbody").text("Nothing to show");
+    }
+  });
+
+  $.ajax("/api/depts/", {
+    type: "GET"
+  }).then(function(dbDept) {
+    if (dbDept) {
+      var tableHead = $("<thead>");
+      var theadTr = $("<tr>").html(
+        "<th scope='col'>#</th><th scope='col'>DepartmentName</th><th scope='col'>OverHeadCost</th>"
+      );
+      tableHead.append(theadTr);
+      var tbody = $("<tbody>");
+      for (var i = 0; i < dbDept.length; i++) {
+        var tr = $("<tr>");
+        var th = $("<th>").attr("scope", "row").text(dbDept[i].departmentId);
+        var td1 = $("<td>").text(dbDept[i].departmentName);
+        var td2 = $("<td>").text(dbDept[i].overHeadCosts);
+        var td3 = "<i data-id=" +
+          dbDept[i].departmentId + 
+          " class='fa fa-pencil-square' aria-hidden='true'></i> &nbsp;&nbsp;<i data-id=" +
+          dbDept[i].departmentId + " class='fa fa-trash' aria-hidden='true'></i> ";
+        tr.append(th, td1, td2, td3);
+        tbody.append(tr);
+      }
+      $("#deptTable").append(tableHead, tbody);
+    } else {
+      $("#tbody").text("Nothing to show");
+    }
+  });
+
+  $("#newDeptSubmit").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+    var DeptName = $("#dept-name").val().trim();
+    var DeptOHC = $("#dept-ohc").val().trim();
+    if (DeptName && DeptOHC) {
+      var newDept = {
+        departmentName: DeptName,
+        overHeadCosts: DeptOHC
+      };
+      $.ajax("/api/createDept", {
+        type: "POST",
+        data: newDept
+      }).then(function(result) {
+        if (result) {
+          console.log("Display the Dashboard");
+          // Reload the page to get the updated list
+          location.assign("/depts");
+        }
+      });
+    } else {
+      alert("Not a valid entry");
+    }
+  });
+
+  $("#newItemSubmit").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var ItemName = $("#item-name").val().trim();
+    var ItemPrice = $("#item-price").val().trim();
+    var DepartmentId = $("#dept").val().trim();
+    var StockQuantity = $("#stock-qty").val().trim();
+    var ItemDescription = $("#item-description").val().trim();
+    var ItemImage = $("#item-image").val().trim();
+    if (
+      ItemName &&
+      ItemPrice &&
+      StockQuantity &&
+      DepartmentId &&
+      ItemDescription
+    ) {
+      var newItem = {
+        itemName: ItemName,
+        itemPrice: ItemPrice,
+        departmentId: DepartmentId,
+        stockQuantity: StockQuantity,
+        itemDesciption: ItemDescription,
+        itemImage: ItemImage
+      };
+      $.ajax("/api/createItem/", {
+        type: "POST",
+        data: newItem
+      }).then(function(result) {
+        if (result) {
+          console.log("Display the Dashboard");
+          // Reload the page to get the updated list
+          location.assign("/items");
+        }
+      });
+    } else {
+      alert("Not a valid entry");
+    }
+  });
 });
-// $(function() {
-//   $(".create-form").on("submit", function(event) {
-//     // Make sure to preventDefault on a submit event.
-//     event.preventDefault();
-
-//     var burgerName = $("#burger_name"). val().trim();
-//     if (burgerName) {
-//             var newBurger = {
-//                 burger_name: burgerName,
-//                 devoured: 0
-//             };
-//             // Send the POST request.
-//             $.ajax("/api/burgers", {
-//                 type: "POST",
-//                 data: newBurger
-//             }).then(
-//                 function () {
-//                     console.log("created new burger");
-//                     // Reload the page to get the updated list
-//                     location.reload();
-//                 }
-//             );
-
-//         } else {
-//             alert('Not a valid entry');
-//         }
-
-//     });
-
-//     $("#todevour li button").on("click", function (event) {
-//         // Make sure to preventDefault on a submit event.
-//         event.preventDefault();
-
-//         var updatedBurgers = {
-//             devoured: 1
-//         };
-
-//         var id = $(this).data("id");
-//         // Send the POST request.
-//         $.ajax("/api/burgers/" + id, {
-//             type: "PUT",
-//             data: updatedBurgers
-//         }).then(
-//             function () {
-//                 console.log("updated burger");
-//                 // Reload the page to get the updated list
-//                 location.assign("/");
-//             }
-//         );
-//     });
-
-//     $("#devoured li button").on("click", function () {
-
-//         var id = $(this).data("id");
-
-//         // Send the DELETE request.
-//         $.ajax("/api/burgers/" + id, {
-//             type: "DELETE"
-//         }).then(
-//             function () {
-//                 console.log("deleted id ", id);
-//                 // Reload the page to get the updated list
-//                 location.reload();
-//             }
-//         );
-//     });
-// });
