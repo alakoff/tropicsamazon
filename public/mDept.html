@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin:Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS file link -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/styles.css" />
+    <!-- Javascript -->
+    <script src="./js/tropicamazon.js"></script>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-dark">
+                            Welcome Admin
+                        </a>
+                        <a href="/items" class="list-group-item list-group-item-action">Items</a>
+                        <a href="/users" class="list-group-item list-group-item-action">Users</a>
+                        <a href="/depts" class="list-group-item list-group-item-action">Departments</a>
+                        <a href="/signOut" class="list-group-item list-group-item-action disabled" tabindex="-1"
+                            aria-disabled="true">LogOut</a>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <h1><span class="badge badge-secondary" style="margin-left: 35%">Tropic Amazon Admin</span> </h1>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li><button type="button" class="btn btn-dark" id="newDept" data-toggle="modal"
+                                        data-target="#deptModal" data-whatever="@mdo">Add New</button>
+                                </li>
+                            </ul>
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </nav>
+                    <table class="table table-striped table-dark" id="deptTable">
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--modal for new depatment creation-->
+    <div class="modal fade" id="deptModal" tabindex="-1" role="dialog" aria-labelledby="deptModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deptModalLabel">New Department</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Department Name:</label>
+                            <input type="text" class="form-control" id="dept-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Over Head Cost:</label>
+                            <input type="text" class="form-control" id="dept-ohc">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="newDeptSubmit" class="btn btn-dark">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal ends-->
+</body>
+
+</html>

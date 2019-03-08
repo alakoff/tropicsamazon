@@ -8,6 +8,11 @@
     #logOut{
         margin-left: 10px;
     }
+    
+    *{
+    background:#f8f9fa;
+    
+    }
 
     /* from cart.html */
     #myCart{
