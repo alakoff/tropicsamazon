@@ -101,7 +101,8 @@
 // sends user to create an account
 $("#create").on("click", function() {
   console.log("create account");
-  window.location.href = "/createUser";
+  window.location.href =
+    "https://accounts.google.com/signup/v2/webcreateaccount?hl=en-GB&flowName=GlifWebSignIn&flowEntry=SignUp";
 });
 
 $("#customer").on("click", function() {
