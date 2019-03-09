@@ -19,3 +19,18 @@ body{
 #customerlogout {
   color: white;
 }
+.btn {
+  margin-left: 5px;
+}
+a {
+  color:white;
+}
+#inpcustsearch {
+  margin-left: 10px;
+}
+
+#creategoogleaccount {
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+}
