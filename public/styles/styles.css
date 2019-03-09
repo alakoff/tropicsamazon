@@ -5,5 +5,13 @@ body{
   line-height: 2.5;
 }
 #login{
-  margin-top: 150px;
+  margin-top: 80px;
+}
+
+#or{
+  margin-left: 45px;
+}
+
+#customergoogle {
+  color:white;
 }
