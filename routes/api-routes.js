@@ -122,6 +122,13 @@ module.exports = function(app) {
       res.json(dbItem);
     });
   });
+   //Post route for creating new Item
+   app.post("/api/createItem/", function(req, res) {
+    db.Item.create(req.body).then(function(dbNewItem) {
+      // return the result to the user with res.json
+      res.json(dbNewItem);
+    });
+  });
   // // Get route for retrieving a single item
   // app.get("/api/items/:id", function(req, res) {
   //   // Here we add an "include" property to our options in our findOne query
