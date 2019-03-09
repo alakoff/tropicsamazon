@@ -98,13 +98,13 @@
 // $submitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-// sends user to create an account
-// $("#create").on("click", function() {
-//   console.log("create account");
-//   window.location.href = "/createUser";
-// });
+//sends user to create an account
+$("#create").on("click", function() {
+  console.log("create account");
+  window.location.href = "/createUser";
+});
 
-// $("#customer").on("click", function() {
-//   console.log("customer");
-//   window.location.href = "/customers";
-// });
+$("#customer").on("click", function() {
+  console.log("customer");
+  window.location.href = "/customers";
+});
