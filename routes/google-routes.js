@@ -7,6 +7,7 @@ module.exports = function(app) {
     passport.authenticate("google", {
       scope: [
         "https://www.googleapis.com/auth/plus.login",
+        ,
         "https://www.googleapis.com/auth/plus.profile.emails.read"
       ]
     })
@@ -19,10 +20,4 @@ module.exports = function(app) {
       failureRedirect: "/auth/google/failure"
     })
   );
-
-  app.get("/logout", function(req, res) {
-    console.log("logged out!");
-    req.logout();
-    res.redirect("/");
-  });
 };
