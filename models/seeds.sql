@@ -65,7 +65,8 @@ select * from state;
 
 insert into UserProfile(userName,userEmail,userPasswd,userStatus,userType,userAddress,city,zipcode,createdat,updatedAt) 
 values('Admin','silpashinto@gmail.com','admin',1,'admin','3244 kilburn','Glen Allen','23233',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
-
+insert into UserProfile(userName,userEmail,userPasswd,userStatus,userType,userAddress,city,zipcode,createdat,updatedAt) 
+values('Ima Test Customer','ima@gmail.com','',0,'customer','123 Main St','Glen Allen','23233',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
 select * from UserProfile;
 
 insert into department(departmentName,overHeadCosts,createdAt,updatedAt)
@@ -73,5 +74,5 @@ values ('Elecrtonics',2000,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
 select * from department;
 
 insert into Item(itemName,itemDesciption,itemImage,stockQuantity,productSales,createdAt,updatedAt,departmentId) 
-values('Mobile Phone','lorem ipsum ffheror nvbgiej kkdjgdijdfn','http://jcn.gif',100,10,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),1);
+values('Mobile Phone','Apple Iphone XS','http://jcn.gif',100,10,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),1);
 select * from Item; 

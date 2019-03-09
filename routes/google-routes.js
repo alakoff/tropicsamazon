@@ -20,4 +20,10 @@ module.exports = function(app) {
       failureRedirect: "/auth/google/failure"
     })
   );
+
+  app.get("/logout", function(req, res) {
+    console.log("logged out!");
+    req.logout();
+    res.redirect("/");
+  });
 };
