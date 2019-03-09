@@ -26,6 +26,53 @@ module.exports = function(app) {
     });
   });
 
+  // // Get route for returning posts of a specific category
+  // app.get("/api/posts/category/:category", function (req, res) {
+  //   // Add sequelize code to find all posts where the category is equal to req.params.category,
+
+  //   db.Post.findAll({
+  //     where: {
+  //       category: req.params.category
+  //     }
+  //   }).then(function (dbPost) {
+  //     // return the result to the user with res.json
+  //     res.json(dbPost);
+
+  //   });
+
+  // })
+  app.get("/api/states", function(req, res) {
+    // Add sequelize code to find all items
+    db.State.findAll({}).then(function(dbStates) {
+      // return the result to the user with res.json
+      res.json(dbStates);
+    });
+  });
+  // // Get route for retrieving a single post
+  // app.get("/api/posts/:id", function (req, res) {
+  //   // Add sequelize code to find a single post where the id is equal to req.params.id,
+  //   db.Post.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function (dbPost) {
+  //     // return the result to the user with res.json
+  //     res.json(dbPost);
+
+  //   });
+
+  // });
+
+  // // POST route for saving a new post
+  // app.post("/api/posts", function (req, res) {
+  //   // Add sequelize code for creating a post using req.body,
+  //   db.Post.create({
+  //     title: req.body.title,
+  //     body: req.body.body,
+  //     category: req.body.category
+  //   }).then(function (dbPost) {
+  //     // then return the result using res.json
+  //     res.json(dbPost);
   // // Get route for returning Items of all department
   // app.get("/api/items/", function(req, res) {
   //   // Add sequelize code to find all items
@@ -74,6 +121,37 @@ module.exports = function(app) {
     });
   });
 
+  // // DELETE route for deleting posts
+  // app.delete("/api/posts/:id", function (req, res) {
+  //   // Add sequelize code to delete a post where the id is equal to req.params.id,
+  //   db.Post.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function(dbPost) {
+  //     // then return the result to the user using res.json
+  //     res.json(dbPost);
+  //   });
+
+  // });
+
+  // // PUT route for updating posts
+  // app.put("/api/posts", function (req, res) {
+  //   // Add code here to update a post using the values in req.body, where the id is equal to req.body.id and
+  //   db.Post.update({
+  //     title: req.body.title,
+  //     body: req.body.body,
+  //     category: req.body.category
+  //   }, {
+  //     where: {
+  //       id: req.body.id
+  //     }
+  //   }).then(function(dbPost) {
+  //    // return the result to the user using res.json
+  //     res.json(dbPost);
+  //   });
+
+  // });
   // GET route for getting all of the posts
   app.get("/api/items", function(req, res) {
     var query = {};
