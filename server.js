@@ -8,33 +8,32 @@ require("dotenv").config();
 var express = require("express");
 var passport = require("passport");
 
-
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
 
-// Passport Google OAUTH
-var GoogleStrategy = require("passport-google-oauth2").Strategy;
+// Requiring our models for syncing
+var db = require("./models");
+
+//Passport.js
+var GoogleStrategy = require("passport-google-oauth20").Strategy;
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "https://blooming-waters-74378.herokuapp.com/customers",
+      // callbackURL: "https://localhost:8080/google/success",
       passReqToCallback: true
     },
-    function(request, accessToken, refreshToken, profile, done) {
-      User.findOrCreate({ googleId: profile.id }, function(err, user) {
-        return done(err, user);
-      });
-    }
-  )
-);
-
-// Requiring our models for syncing
-var db = require("./models");
-
+    function(accessToken, refreshToken, profile, callback){
+      // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+        callback(err, res)
+          console.log(res);
+        
+    }));
+  
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -69,5 +68,6 @@ db.sequelize.sync(syncOptions).then(function() {
     );
   });
 });
+    
 
 module.exports = app;

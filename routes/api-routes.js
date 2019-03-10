@@ -143,4 +143,9 @@ module.exports = function(app) {
   //     res.json(dbItem);
   //   });
   // });
+
+  app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
 };
