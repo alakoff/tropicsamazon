@@ -3,32 +3,42 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>client products</title>
+    <title>TropicAmazon</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- css link -->
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/customer.css">
-    <!-- bootStrap link -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <!-- Bootstrap link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
-    </head>
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Javascript -->
+    <script src="./js/home.js"></script>
+
+</head>
 
 <body>
     <div>
-        <!-- <h1 class="display-4">TropicAmazon</h1> -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#" id="navName">TropicAmazon</a>
+            <a class="navbar-brand" href="/customers" id="navName">TropicAmazon</a>
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/customers">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Cart</a>
@@ -46,53 +56,31 @@
         <div class="container">
             <div class="form-inline">
                 <div class="form-group">
-                    <label for="category">Category:</label>
-                    <select class="form-control" id="category">
+                    <label for="category">Category:&nbsp;</label>
+                    <select class="form-control" id="category"></select>
                     </select>
-                </div>
+                </div> &nbsp;&nbsp;
                 <div class="form-group">
-                    <label for="category">Price Range:</label>
+                    <label for="category">Price Range:&nbsp;</label>
                     <select class="form-control" id="priceRange">
+                        <option>select</option>
+                        <option>1-10</option>
+                        <option>10-500</option>
+                        <option>500-1000</option>
+
                     </select>
                 </div>
             </div>
+            <br>
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Item</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Buy</th>
-
+                        <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id
-                                consequat erat.
-                                Suspendisse potenti. Morbi tristique molestie tortor, ut tempor odio interdum nec.
-                                Aenean
-                                fermentum consequat quam, sit amet faucibus enim posuere sed. </p>
-                        </td>
-                        <td>
-                            <div class="form-inline">
-                                <div class="form-group">
-                                    <!-- <label for="inputPassword6">Amount</label> -->
-                                    <input type="text" id="inputPassword6" class="form-control mx-sm-3">
-                                    <button type="submit" class="btn btn-primary mb-2" id="addCart">Add to Cart</button>
-                                </div>
-
-                            </div>
-                        </td>
-                    </tr>
-
+                <tbody id="itemTable">
                 </tbody>
             </table>
         </div>
