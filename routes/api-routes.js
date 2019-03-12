@@ -25,11 +25,19 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
-  app.get("/api/states", function(req, res) {
-    // Add sequelize code to find all items
+  // gets all of the states of the  database
+  app.get("/api/states/", function(req, res) {
+    // Add sequelize code to find all states
     db.State.findAll({}).then(function(dbStates) {
       // return the result to the user with res.json
       res.json(dbStates);
+    });
+  });
+  //Post route for creating new Item
+  app.post("/api/account/", function(req, res) {
+    db.UserProfile.create(req.body).then(function(dbAccount) {
+      // return the result to the user with res.json
+      res.json(dbAccount);
     });
   });
   // Get route for returning Items of all department
@@ -144,8 +152,10 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.get('/logout', function(req, res){
+
+  app.get("/logout", function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect("/");
+
   });
 };
