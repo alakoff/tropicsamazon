@@ -23,4 +23,10 @@
         font-weight: bolder;
     }
    
-
+#logout {
+    color: white;
+    margin-left: 5px;
+}
+.btn-info {
+    margin-right: 5px;
+}
