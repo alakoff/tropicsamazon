@@ -18,4 +18,9 @@
     #myCart{
         text-align: center;
     }
+    .text-muted{
+        color: black;
+        font-weight: bolder;
+    }
+   
 
