@@ -152,14 +152,10 @@ module.exports = function(app) {
   //   });
   // });
 
-<<<<<<< HEAD
+
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
-=======
-  app.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/');
->>>>>>> master
+
   });
 };
