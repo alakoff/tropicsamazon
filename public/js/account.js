@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $.ajax("/api/states", {
+  $.ajax("/api/states/", {
     type: "GET"
   }).then(function(states) {
     if (states) {
@@ -31,10 +31,6 @@ $(document).ready(function() {
         .val()
         .trim();
 
-      var address2 = $("#address2")
-        .val()
-        .trim();
-
       var city = $("#city")
         .val()
         .trim();
@@ -43,13 +39,52 @@ $(document).ready(function() {
         .val()
         .trim();
 
+      var zip = $("#inputZip")
+        .val()
+        .trim();
+
       console.log("-------------------------------------");
       console.log("name: " + firstName + " " + lastName);
       console.log("Email: " + email);
       console.log("Address: " + address);
-      console.log("Address2: " + address2);
       console.log("City: " + city);
       console.log("State: " + state);
+      console.log("Zip code: " + zip);
+
+      if (
+        firstName &&
+        lastName &&
+        email &&
+        address &&
+        address2 &&
+        city &&
+        state &&
+        zip
+      ) {
+        var newCustomer = {
+          userName: firstName + lastName,
+          userEmail: email,
+          useAddress: address,
+          city: city,
+          state: state,
+          zipcode: zip,
+          userType: "customer",
+          userPasswd: "1"
+        };
+        $.ajax("/api/account/", {
+          type: "POST",
+          data: newCustomer
+        }).then(function(result) {
+          if (result) {
+            console.log("Display the Dashboard");
+            // Reload the page to get the updated list
+            // window.location.href("/customers");
+            location.assign("/customers");
+          }
+        });
+      } else {
+        alert("Not a valid entry");
+      }
     });
   });
 });

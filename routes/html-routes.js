@@ -43,4 +43,10 @@ module.exports = function(app) {
   app.get("/signOut", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
+
+  // cureate User route loads account.html
+  app.get("/google/success", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/account.html"));
+    console.log("should see account.html page");
+  });
 };

@@ -98,7 +98,7 @@
 // $submitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-// sends user to create an account
+//sends user to create an account
 // $("#create").on("click", function() {
 //   console.log("create account");
 //   window.location.href = "/createUser";

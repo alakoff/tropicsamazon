@@ -290,7 +290,7 @@ function editItem(recordId) {
             .attr("value", dbDept[i].departmentId)
             .text(dbDept[i].departmentName);
           if (dbDept[i].departmentId === dbItem.departmentId) {
-            option.attr("selected");
+            option.attr("selected", "selected");
           }
           $("#e_dept").append(option);
         }
