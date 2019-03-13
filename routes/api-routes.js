@@ -25,6 +25,20 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
+  // sign in for customer
+  app.post("/api/signInCustomer/", function(req, res) {
+    // Add sequelize code to find  and login Admin, and return them to the adminDashbord with res.json
+    db.UserProfile.findOne({
+      where: {
+        userEmail: req.body.userEmail,
+        userPasswd: req.body.userPasswd,
+        userType: req.body.userType
+      }
+    }).then(function(dbUser) {
+      // return the result to the user with res.json
+      res.json(dbUser);
+    });
+  });
   // gets all of the states of the  database
   app.get("/api/states/", function(req, res) {
     // Add sequelize code to find all states

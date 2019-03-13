@@ -26,7 +26,9 @@
 
     <!-- Javascript -->
     <script src="./js/tropicamazon.js"></script>
-
+    
+    <!-- customer Login model div end-->
+    <script src="./js/index.js"></script>
 </head>
 
 <body>
@@ -34,51 +36,89 @@
         <div class="row">
             <img src="./images/instagram_profile_image.png" alt="" style="width:1em; height:39em;" class="col-sm-8">
             <div class="col-md-4" id="login">
-                <button type="button" class="btn btn-primary btn-lg" id="customer"><a id="customergoogle" href="/auth/google">Customer Login with Google</a></button>
-                <br>           
-                <button type="button" class="btn btn-link" id="create"><a id="creategoogleaccount" href="https://accounts.google.com/signup/v2/webcreateaccount?hl=en-GB&flowName=GlifWebSignIn&flowEntry=SignUp">Create Google Account</a></button>
+                <button type="button" class="btn btn-primary btn-lg" id="customer"><a id="customergoogle"
+                        href="/auth/google">Customer Login with Google</a></button>
                 <br>
+                <button type="button" class="btn btn-link" id="create"><a id="creategoogleaccount"
+                        href="https://accounts.google.com/signup/v2/webcreateaccount?hl=en-GB&flowName=GlifWebSignIn&flowEntry=SignUp">Create
+                        Google Account</a></button>
+                <hr>
+                <br>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerLogin"
+                    data-whatever="">Login(without google account)</button>
+                <button type="button" class="btn btn-link" id="create"><a id="createAccount">Create Account</a></button>
                 <hr class="my-4">
                 <br>
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#managerLogin"
-                        data-whatever="">Manager Login</button>
+                    data-whatever="">Manager Login</button>
             </div>
         </div>
 
     </div>
-      <!--Login Model Div for Admin-->
+    <!--Login Model Div for Admin-->
 
-      <div class="modal fade" id="managerLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="managerLoginLabel">Manager Login</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                  <form>
-                      <div class="form-group">
-                          <label for="recipient-name" class="col-form-label">UserName:</label>
-                          <input type="text" class="form-control" id="UserName">
-                      </div>
-                      <div class="form-group">
-                          <label for="message-text" class="col-form-label">Password:</label>
-                          <input type="password" class="form-control" id="PassWd">
-                      </div>
-                  </form>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" id="mLoginSubmit" class="btn btn-primary">Login</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!--Login model div end-->
-    <script src="./js/index.js"></script>
+    <div class="modal fade" id="managerLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="managerLoginLabel">Manager Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">UserName:</label>
+                            <input type="text" class="form-control" id="UserName">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Password:</label>
+                            <input type="password" class="form-control" id="PassWd">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="mLoginSubmit" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Login model div end-->
+
+    <!--Login Model Div for customer-->
+
+    <div class="modal fade" id="customerLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="customerLoginLabel">Login without a Google account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="UserName2" class="col-form-label">Email:</label>
+                            <input type="text" class="form-control" id="UserName2">
+                        </div>
+                        <div class="form-group">
+                            <label for="PassWd2" class="col-form-label">Password:</label>
+                            <input type="password" class="form-control" id="PassWd2">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="cLoginSubmit" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

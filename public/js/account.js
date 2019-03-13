@@ -57,12 +57,13 @@ $(document).ready(function() {
         var newCustomer = {
           userName: firstName + lastName,
           userEmail: email,
-          useAddress: address,
+          userAddress: address,
           city: city,
           state: state,
           zipcode: zip,
           userType: "customer",
-          userPasswd: "1"
+          userPasswd: "Luis",
+          userStatus: 1
         };
         $.ajax("/api/account/", {
           type: "POST",
