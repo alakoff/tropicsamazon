@@ -6,8 +6,8 @@
     <title>create account</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <!-- jQuery -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- css link -->
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/account.css">
@@ -15,7 +15,7 @@
     <!-- bootstrap link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        
+
     <!-- javascript link -->
     <script src="./js/account.js"></script>
 </head>
@@ -28,9 +28,13 @@
 
             <form id="form">
                 <div class="form-row">
+                    <div class="form-group col-md-12">
+                            <label for="googleId">Google ID</label>
+                        <input type="text" class="form-control" id="googleId">
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" placeholder="First name" id="firstName"  required>
+                        <input type="text" class="form-control" placeholder="First name" id="firstName" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastName">Last Name</label>
