@@ -14,7 +14,6 @@ $(document).ready(function() {
     }
 
     $("#button").on("click", function() {
-      event.preventDefault();
       var firstName = $("#firstName")
         .val()
         .trim();
@@ -50,17 +49,11 @@ $(document).ready(function() {
       console.log("City: " + city);
       console.log("State: " + state);
       console.log("Zip code: " + zip);
-
-      if (
-        firstName &&
-        lastName &&
-        email &&
-        address &&
-        address2 &&
-        city &&
-        state &&
-        zip
-      ) {
+      // var form = $("form");
+      // if (form === "") {
+      //   alert("addfaada");
+      // }
+      if (firstName && lastName && email && address && city && state && zip) {
         var newCustomer = {
           userName: firstName + lastName,
           userEmail: email,
@@ -83,8 +76,13 @@ $(document).ready(function() {
           }
         });
       } else {
-        alert("Not a valid entry");
+        // alert("Not a valid entry");
       }
+      reset();
     });
   });
 });
+
+function reset() {
+  $("#form").trigger("reset");
+}
