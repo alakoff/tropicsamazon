@@ -2,11 +2,12 @@ require("dotenv").config();
 // *****************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
 //
-// ******************************************************************************
-// *** Dependencies
+// 
+// Dependencies
 // =============================================================
 var express = require("express");
 var passport = require("passport");
+
 
 // Sets up the Express App
 // =============================================================
@@ -14,26 +15,8 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
-var db = require("./models");
+var db = require("./models");          
 
-//Passport.js
-var GoogleStrategy = require("passport-google-oauth20").Strategy;
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://blooming-waters-74378.herokuapp.com/customers",
-      // callbackURL: "https://localhost:8080/google/success",
-      passReqToCallback: true
-    },
-    function(accessToken, refreshToken, profile, callback){
-      // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        callback(err, res)
-          console.log(res);
-        
-    }));
-  
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -57,6 +40,36 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+
+
+//Passport.js
+var GoogleStrategy = require("passport-google-oauth20").Strategy;
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      // callbackURL: "https://blooming-waters-74378.herokuapp.com/customers"
+      callbackURL: "http://localhost:8080/auth/google/callback"
+    },
+    function(accessToken, refreshToken, profile, cb){
+        var userId = profile.id;
+        userId = userId.slice(0,6);
+        db.UserProfile
+          .findOrCreate({where: {googleId:userId}})
+          .spread((userId,created)=> {
+            console.log(userId.get(
+              {
+              plain:true
+              }
+              )), 
+            console.log(created);
+          }),
+          function(err, user){
+            return cb(err, user);
+          }
+        }));
+
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
