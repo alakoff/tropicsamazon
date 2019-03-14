@@ -49,7 +49,6 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      // callbackURL: "https://blooming-waters-74378.herokuapp.com/customers"
       callbackURL: "http://localhost:8080/auth/google/callback"
     },
     function(accessToken, refreshToken, profile, cb){
@@ -64,11 +63,17 @@ passport.use(
               }
               )), 
             console.log(created);
-          }),
-          function(err, user){
-            return cb(err, user);
-          }
-        }));
+            if (created===false) {
+              app.get('/customers', function(req,res){
+              });
+          }}),
+        function (err, user) {
+          return cb(err, user);
+        }
+         
+        }
+                
+        ));
 
 
 // Starting the server, syncing our models ------------------------------------/
