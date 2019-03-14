@@ -1,3 +1,49 @@
+$(function() {
+  $("#customerLogin").on("show.bs.modal", function(event) {
+    var button = $(event.relatedTarget);
+    var recipient = button.data("whatever");
+    var modal = $(this);
+    modal.find(".modal-body input").val(recipient);
+  });
+
+  $("#cLoginSubmit").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+    var userEmail = $("#UserName2")
+      .val()
+      .trim();
+    var PassWd = $("#PassWd2")
+      .val()
+      .trim();
+
+    console.log(PassWd);
+    console.log(userEmail);
+    if (UserName && PassWd) {
+      var LoginUser2 = {
+        userEmail: userEmail,
+        userPasswd: PassWd,
+        userType: "customer"
+      };
+    }
+    $.ajax("/api/signInCustomer/", {
+      type: "POST",
+      data: LoginUser2
+    }).then(function(dbUser) {
+      if (dbUser) {
+        console.log("hello");
+        // Reload the page to get the updated list
+        location.assign("/customers");
+      } else {
+        console.log("hello not here");
+        // location.assign("/customers");
+      }
+    });
+  });
+
+  $("#createAccount").on("click", function() {
+    location.assign("/createUser");
+  });
+});
 // // Get references to page elements
 // var $exampleText = $("#example-text");
 // var $exampleDescription = $("#example-description");

@@ -14,7 +14,6 @@ $(document).ready(function() {
     }
 
     $("#button").on("click", function() {
-      event.preventDefault();
       var firstName = $("#firstName")
         .val()
         .trim();
@@ -43,6 +42,9 @@ $(document).ready(function() {
         .val()
         .trim();
 
+      var password = $("#password")
+        .val()
+        .trim();
       console.log("-------------------------------------");
       console.log("name: " + firstName + " " + lastName);
       console.log("Email: " + email);
@@ -50,26 +52,25 @@ $(document).ready(function() {
       console.log("City: " + city);
       console.log("State: " + state);
       console.log("Zip code: " + zip);
-
-      if (
-        firstName &&
-        lastName &&
-        email &&
-        address &&
-        address2 &&
-        city &&
-        state &&
-        zip
-      ) {
+      console.log("password: " + password);
+      // var form = $("form");
+      // if (form === "") {
+      //   alert("addfaada");
+      // }
+      if (!password) {
+        password = "null";
+      }
+      if (firstName && lastName && email && address && city && state && zip) {
         var newCustomer = {
           userName: firstName + lastName,
           userEmail: email,
-          useAddress: address,
+          userAddress: address,
           city: city,
           state: state,
           zipcode: zip,
           userType: "customer",
-          userPasswd: "1"
+          userPasswd: password,
+          userStatus: 1
         };
         $.ajax("/api/account/", {
           type: "POST",
@@ -83,8 +84,13 @@ $(document).ready(function() {
           }
         });
       } else {
-        alert("Not a valid entry");
+        // alert("Not a valid entry");
       }
+      reset();
     });
   });
 });
+
+function reset() {
+  $("#form").trigger("reset");
+}
