@@ -25,6 +25,20 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
+  // sign in for customer
+  app.post("/api/signInCustomer/", function(req, res) {
+    // Add sequelize code to find  and login Admin, and return them to the adminDashbord with res.json
+    db.UserProfile.findOne({
+      where: {
+        userEmail: req.body.userEmail,
+        userPasswd: req.body.userPasswd,
+        userType: req.body.userType
+      }
+    }).then(function(dbUser) {
+      // return the result to the user with res.json
+      res.json(dbUser);
+    });
+  });
   // gets all of the states of the  database
   app.get("/api/states/", function(req, res) {
     // Add sequelize code to find all states
@@ -98,7 +112,7 @@ module.exports = function(app) {
     if (req.query.departmentId) {
       query.departmentId = req.query.departmentId;
     }
-    // Here we add an "include" property to our options in our findone query
+    // Here we add an "include" property to our options in our find one query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Department
     db.Item.findOne({
@@ -152,10 +166,8 @@ module.exports = function(app) {
   //   });
   // });
 
-
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
-
   });
 };
