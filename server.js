@@ -29,8 +29,8 @@ passport.use(
     },
     function(accessToken, refreshToken, profile, callback){
       // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        callback(err, res)
-          console.log(res);
+      callback(err, res)
+      console.log(res);
         
     }));
   
