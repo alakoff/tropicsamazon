@@ -13,8 +13,20 @@ module.exports = function(app) {
 
   // index route loads index.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
+    if (req.session.token) {
+      res.cookie('token', req.session.token);
+      res.json({
+          status: 'session cookie set'
+      });
+    } else {
+      res.cookie('token', '')
+      res.json({
+          status: 'session cookie not set'
+      });
+    }
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
+
   // create User route loads account.html
   app.get("/createUser", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/account.html"));
@@ -44,7 +56,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
-  // cureate User route loads account.html
+  // Success Google callback route loads account.html
   app.get("/google/success", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/account.html"));
   });

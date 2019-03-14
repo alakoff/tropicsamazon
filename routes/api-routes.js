@@ -130,6 +130,7 @@ module.exports = function(app) {
       res.json(dbItem);
     });
   });
+  
   //Post route for creating new Item
   app.post("/api/createItem/", function(req, res) {
     db.Item.create(req.body).then(function(dbNewItem) {
@@ -152,10 +153,22 @@ module.exports = function(app) {
   //   });
   // });
 
+  //auth google success
+  app.get('/auth/google/success', function(req, res){
+    res.redirect('/customers');
+  });
+
+  //auth google failure
+  app.get('/auth/google/failure', function(req, res){
+    req.logout();
+    req.session = null;
+    res.redirect('/');
+  });
 
   //Passport logout
   app.get('/logout', function(req, res){
     req.logout();
+    req.session = null;
     res.redirect('/');
   });
 }
