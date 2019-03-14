@@ -59,6 +59,8 @@ module.exports = function(app) {
   // Success Google callback route loads account.html
   app.get("/google/success", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/account.html"));
+  });
+
   // cureate User route loads account.html
   app.get("/googleSuccess", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/googleAccount.html"));
