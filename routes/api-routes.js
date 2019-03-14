@@ -47,16 +47,16 @@ module.exports = function(app) {
       res.json(dbStates);
     });
   });
-  //Post route for creating new Item
+  //Post route for creating new user
   app.post("/api/account/", function(req, res) {
     db.UserProfile.create(req.body).then(function(dbAccount) {
       // return the result to the user with res.json
       res.json(dbAccount);
     });
   });
-  // Get route for returning Items of all department
+  // Get route for returning all users
   app.get("/api/users/", function(req, res) {
-    // Add sequelize code to find all items
+    // Add sequelize code to find all users
     db.UserProfile.findAll({}).then(function(dbUsers) {
       // return the result to the user with res.json
       res.json(dbUsers);
@@ -144,6 +144,7 @@ module.exports = function(app) {
       res.json(dbItem);
     });
   });
+  
   //Post route for creating new Item
   app.post("/api/createItem/", function(req, res) {
     db.Item.create(req.body).then(function(dbNewItem) {
@@ -166,8 +167,22 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
+  //auth google success
+  app.get('/auth/google/success', function(req, res){
+    res.redirect('/customers');
   });
-};
+
+  //auth google failure
+  app.get('/auth/google/failure', function(req, res){
+    req.logout();
+    req.session = null;
+    res.redirect('/');
+  });
+
+  //Passport logout
+  app.get('/logout', function(req, res){
+    req.logout();
+    req.session = null;
+    res.redirect('/');
+  });
+}
