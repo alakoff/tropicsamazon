@@ -24,7 +24,7 @@ $("#btnSearch").click(function(event) {
           var nxtDiv = $("<div>").attr("class", "row no-gutters");
           var coldiv = $("<div>").attr("class", "col-md-4");
           var img = $("<img>")
-            .attr("src", "./images/tropicamazon_logo_small.png")
+            .attr("src", "./images/" + dbItmes[i].itemImage)
             .attr("class", "card-img");
           coldiv.append(img);
           var nxtColDiv = $("<div>").attr("class", "col-md-8");
