@@ -7,7 +7,8 @@
 
 // Requiring our Todo model
 var db = require("../models");
-
+var multer = require("multer");
+var upload = multer({ dest: "./public/images/" });
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -185,4 +186,19 @@ module.exports = function(app) {
     req.session = null;
     res.redirect('/');
   });
-}
+  app.post("/api/file", upload.single("item-image"), function(req, res, next) {
+    console.log("here", req.body);
+    db.Item.update(
+      {
+        itemImage: req.file.filename
+      },
+      {
+        where: {
+          itemId: req.body.itemId
+        }
+      }
+    );
+    res.redirect("/items");
+    // res.json(req.file);
+  });
+};

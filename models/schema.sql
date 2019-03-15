@@ -34,6 +34,7 @@ userAddress text(255),
 city varchar(30),
 stateId integer(11),
 zipcode varchar(10),
+googleId varchar(255),
 primary key(user_id),
 FOREIGN KEY (stateId) REFERENCES state(stateId)
 );
@@ -42,7 +43,7 @@ drop table if exists item;
 create table item(itemId integer(11)  auto_increment not null,
 itemName varchar(100) not null,
 itemDescription varchar(255) not null,
-itemImage blob,
+itemImage varchar(255),
 departmentId integer(11) not null,
 itemPrice  DECIMAL(11,4) not NULL,
 stockQuantity integer(11) not null,

@@ -1,4 +1,6 @@
 // // Make sure we wait to attach our handlers until the DOM is fully loaded.
+var itemID;
+
 $(function() {
   $("#managerLogin").on("show.bs.modal", function(event) {
     var button = $(event.relatedTarget);
@@ -217,10 +219,11 @@ $(function() {
       alert("Not a valid entry");
     }
   });
+   $("#newItemSubmit").on("click", function(event) {
+  //   // Make sure to preventDefault on a submit event.
+     event.preventDefault();
 
-  $("#newItemSubmit").on("click", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
+     alert("here");
 
     var ItemName = $("#item-name")
       .val()
@@ -237,10 +240,10 @@ $(function() {
     var ItemDescription = $("#item-description")
       .val()
       .trim();
-    var ItemImage = $("#item-image")
+    var ItemImage= $("#item-image")
       .val()
       .trim();
-    if (
+     if (
       ItemName &&
       ItemPrice &&
       StockQuantity &&
@@ -252,23 +255,30 @@ $(function() {
         itemPrice: ItemPrice,
         departmentId: DepartmentId,
         stockQuantity: StockQuantity,
-        itemDesciption: ItemDescription,
-        itemImage: ItemImage
+        itemDesciption: ItemDescription
       };
       $.ajax("/api/createItem/", {
         type: "POST",
         data: newItem
-      }).then(function(result) {
+       })
+      .then(function(result) {
         if (result) {
           console.log("Display the Dashboard");
-          // Reload the page to get the updated list
-          location.assign("/items");
+          $("#itemId").val(result.itemId);
+          $("#itemForm").submit();
+          //location.assign("/items");
         }
       });
-    } else {
+      // .then(async (result) => {
+
+      //      $("#itemId").val(result.itemId);
+      //      await $("#itemForm").submit();
+      //      location.assign("/items");           
+      // });
+      } else {
       alert("Not a valid entry");
     }
-  });
+   });
 });
 
 //edit Item button click
@@ -384,3 +394,4 @@ function editDepartment(recordId) {
 function deleteDepartment(recordId) {
   alert(recordId);
 }
+

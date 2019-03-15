@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
       itemImage: {
-        type: DataTypes.BLOB
+        type: DataTypes.STRING
       },
       stockQuantity: {
         type: DataTypes.INTEGER,
