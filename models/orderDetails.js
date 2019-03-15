@@ -2,6 +2,15 @@ module.exports = function(sequelize, DataTypes) {
   var OrderDetails = sequelize.define(
     "OrderDetails",
     {
+      orderDetailsId: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },
       itemQuantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -20,13 +29,17 @@ module.exports = function(sequelize, DataTypes) {
     { freezeTableName: true }
   );
   OrderDetails.associate = function(models) {
-    OrderDetails.belongsTo(models.UserOrder, {
-      foreignKey: "orderDetailsId",
-      targetKey: "orderId"
+    OrderDetails.belongsTo(models.OrderStatus, {
+      foreignKey: "orderStatusId",
+      targetKey: "orderStatusId"
     });
     OrderDetails.belongsTo(models.Item, {
       foreignKey: "itemId",
       targetKey: "itemId"
+    });
+    OrderDetails.belongsTo(models.UserProfile, {
+      foreignKey: "userId",
+      targetKey: "userId"
     });
   };
   return OrderDetails;

@@ -12,8 +12,15 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       },
-      userId: {
-        type: DataTypes.STRING,
+      orderSubTotal: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },
+      taxAmount: {
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
           len: [1]
@@ -33,6 +40,10 @@ module.exports = function(sequelize, DataTypes) {
     UserOrder.belongsTo(models.OrderStatus, {
       foreignKey: "orderStatusId",
       targetKey: "orderStatusId"
+    });
+    UserOrder.belongsTo(models.UserProfile, {
+      foreignKey: "userId",
+      targetKey: "userId"
     });
   };
   return UserOrder;

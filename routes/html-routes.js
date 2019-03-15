@@ -70,4 +70,8 @@ module.exports = function(app) {
   app.get("/logout", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
+  // confirm route loads confirm.html
+  app.get("/confirmorder", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/confirmorder.html"));
+  });
 };
