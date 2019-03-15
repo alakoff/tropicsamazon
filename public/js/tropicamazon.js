@@ -223,7 +223,7 @@ $(function() {
   //   // Make sure to preventDefault on a submit event.
      event.preventDefault();
 
-     alert("here");
+    //  alert("here");
 
     var ItemName = $("#item-name")
       .val()
