@@ -55,6 +55,9 @@ module.exports = function(sequelize, DataTypes) {
       },
       zipcode: {
         type: DataTypes.STRING
+      },
+      googleId: {
+        type: DataTypes.STRING
       }
     },
     {
